@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Infracstructure\Repository\BaseRepository;
+namespace app\src\Infracstructure\Repository\BaseRepository;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;

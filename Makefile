@@ -19,7 +19,7 @@ help: ## Show this help message
 
 run: ## Start the containers
 	docker network create symfony-network || true
-	U_ID=${UID} docker-compose up -d
+	U_ID=${UID} docker compose up -d
 
 stop: ## Stop the containers
 	U_ID=${UID} docker-compose stop

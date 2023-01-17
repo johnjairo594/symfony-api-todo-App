@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Domain\User\Model;
+namespace src\Domain\User\Model;
 
 use DateTime;
 use LogicException;
@@ -17,7 +17,7 @@ class User implements UserInterface
     private ?string $resetPasswordToken;
     private bool $active;
     private DateTime $createdAt;
-    private DateTime $updateAt;
+    private DateTime $updatedAt;
 
 
     public function __construct(string $name, string $email)
@@ -143,7 +143,7 @@ class User implements UserInterface
      */
     public function getUpdateAt(): DateTime
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**
@@ -151,7 +151,7 @@ class User implements UserInterface
      */
     public function markAsUpdated(): void
     {
-        $this->updateAt = new DateTime();
+        $this->updatedAt = new DateTime();
     }
 
     public function getRoles(): array

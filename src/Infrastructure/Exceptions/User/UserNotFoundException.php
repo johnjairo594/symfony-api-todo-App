@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Infrastructure\Exceptions\User;
+namespace app\src\Infrastructure\Exceptions\User;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
