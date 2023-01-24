@@ -10,6 +10,6 @@ api_platform:
             apiKey:
                 name: Authorization
                 type: header
-    title: To do api
+    title: To Do Api
     version: 1.0
 

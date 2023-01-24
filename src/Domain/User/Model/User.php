@@ -4,10 +4,11 @@ namespace src\Domain\User\Model;
 
 use DateTime;
 use LogicException;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     private string $id;
     private string $name;
@@ -146,9 +147,6 @@ class User implements UserInterface
         return $this->updatedAt;
     }
 
-    /**
-     * @param DateTime $updateAt
-     */
     public function markAsUpdated(): void
     {
         $this->updatedAt = new DateTime();

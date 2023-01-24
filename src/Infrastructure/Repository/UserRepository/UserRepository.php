@@ -1,10 +1,10 @@
 <?php
 
-namespace app\src\Infrastructure\Repository\UserRepository;
+namespace src\Infrastructure\Repository\UserRepository;
 
-use App\src\Domain\User\Model\User;
-use App\src\Infracstructure\Repository\BaseRepository\BaseRepository;
-use App\src\Infrastructure\Exceptions\User\UserNotFoundException;
+use src\Domain\User\Model\User;
+use src\Infrastructure\Repository\BaseRepository\BaseRepository;
+use src\Infrastructure\Exceptions\User\UserNotFoundException;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 

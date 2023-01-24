@@ -1,0 +1,17 @@
+src\Domain\User\Model\User:
+  attributes:
+    normalization_context:
+      group: [user_read]
+  collectionOperations:
+    register:
+      method: POST
+      path: /users/register
+      controller: src\Application\Action\User\Register
+      denormalization_context:
+        groups: [user_post]
+      openapi_context:
+        summary: Register a new user
+  itemOperations:
+    get:
+      method: GET
+#      security: is_granted("USER_READ", object)
