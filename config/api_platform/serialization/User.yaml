@@ -7,10 +7,10 @@ src\Domain\User\Model\User:
     email:
       groups: [user_read, user_post]
     password:
-      groups: [user_post]
+      groups: [ user_post ]
     active:
-      groups: [user_read]
+      groups: [ user_read ]
     createdAt:
-      groups: [user_read]
+      groups: [ user_read ]
     updatedAt:
-      groups: [user_read]
+      groups: [ user_read ]

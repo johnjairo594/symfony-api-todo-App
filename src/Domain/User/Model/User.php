@@ -3,7 +3,10 @@
 namespace src\Domain\User\Model;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use LogicException;
+use src\Domain\ToDo\Model\ToDo;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -19,6 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private bool $active;
     private DateTime $createdAt;
     private DateTime $updatedAt;
+    private Collection $toDos;
 
 
     public function __construct(string $name, string $email)
@@ -29,9 +33,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = null;
         $this->token = sha1(uniqid());
         $this->resetPasswordToken = null;
-        $this->active = false;
+        $this->active = true;
         $this->createdAt = new DateTime();
         $this->markAsUpdated();
+        $this->toDos = new ArrayCollection();
     }
 
     /**
@@ -173,4 +178,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __call($name, $arguments):void
     {
     }
+
+    public function getToDos(): Collection
+    {
+        return $this->toDos;
+    }
+
+    public function addToDo(ToDo $toDo): void
+    {
+        if ($this->toDos->contains($toDo)) {
+            return;
+        }
+
+        $this->toDos->add($toDo);
+    }
+
+    public function removeToDo(ToDo $toDo): void
+    {
+        if ($this->toDos->contains($toDo)) {
+            $this->toDos->removeElement($toDo);
+        }
+    }
+
+    public function containsToDo(ToDo $toDo): bool
+    {
+        return $this->toDos->contains($toDo);
+    }
+
 }

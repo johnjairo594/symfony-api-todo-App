@@ -11,6 +11,31 @@ src\Domain\User\Model\User:
         groups: [user_post]
       openapi_context:
         summary: Register a new user
+    login:
+      method: POST
+      route_name: api_login_check
+      openapi_context:
+        summary: Login a user in the API
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  password:
+                    type: string
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    token:
+                      type: string
   itemOperations:
     get:
       method: GET
