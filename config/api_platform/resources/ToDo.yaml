@@ -1,0 +1,13 @@
+src\Domain\ToDo\Model\ToDo:
+  attributes:
+    normalization_context:
+      group: [todo_read]
+  collectionOperations:
+    register:
+      method: POST
+      path: /users/{id}/add-todo
+      controller: src\Application\Action\User\AddToDo
+      denormalization_context:
+        groups: [todo_post]
+      openapi_context:
+        summary: Add a To Do for a user

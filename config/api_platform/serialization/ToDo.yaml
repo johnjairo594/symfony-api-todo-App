@@ -1,0 +1,14 @@
+src\Domain\ToDo\Model\ToDo:
+  attributes:
+    id:
+      groups: [todo_read]
+    name:
+      groups: [todo_read, todo_post]
+    description:
+      groups: [todo_read, todo_post]
+    done:
+      groups: [ todo_read ]
+    createdAt:
+      groups: [ todo_read ]
+    updatedAt:
+      groups: [ todo_read ]

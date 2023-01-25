@@ -39,4 +39,3 @@ src\Domain\User\Model\User:
   itemOperations:
     get:
       method: GET
-#      security: is_granted("USER_READ", object)
