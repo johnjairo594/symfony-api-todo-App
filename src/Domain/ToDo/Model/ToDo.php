@@ -104,6 +104,4 @@ class ToDo
         $this->updatedAt = new \DateTime();
     }
 
-
-
 }
