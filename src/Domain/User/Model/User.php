@@ -18,7 +18,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $email;
     private ?string $password;
     private ?string $token;
-    private ?string $resetPasswordToken;
     private bool $active;
     private DateTime $createdAt;
     private DateTime $updatedAt;
@@ -32,7 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->setEmail($email);
         $this->password = null;
         $this->token = sha1(uniqid());
-        $this->resetPasswordToken = null;
         $this->active = true;
         $this->createdAt = new DateTime();
         $this->markAsUpdated();
@@ -105,22 +103,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return string|null
-     */
-    public function getResetPasswordToken(): ?string
-    {
-        return $this->resetPasswordToken;
-    }
-
-    /**
-     * @param string|null $resetPasswordToken
-     */
-    public function setResetPasswordToken(?string $resetPasswordToken): void
-    {
-        $this->resetPasswordToken = $resetPasswordToken;
-    }
-
-    /**
      * @return bool
      */
     public function isActive(): bool
@@ -184,7 +166,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->toDos;
     }
 
-    public function addToDo(ToDo $toDo): void
+    public function addToDoToCollection(ToDo $toDo): void
     {
         if ($this->toDos->contains($toDo)) {
             return;
@@ -193,14 +175,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->toDos->add($toDo);
     }
 
-    public function removeToDo(ToDo $toDo): void
+    public function removeToDoFromCollection(ToDo $toDo): void
     {
         if ($this->toDos->contains($toDo)) {
             $this->toDos->removeElement($toDo);
         }
     }
 
-    public function containsToDo(ToDo $toDo): bool
+    public function containsToDoInCollection(ToDo $toDo): bool
     {
         return $this->toDos->contains($toDo);
     }

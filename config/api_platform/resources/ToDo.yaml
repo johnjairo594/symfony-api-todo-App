@@ -5,7 +5,7 @@ src\Domain\ToDo\Model\ToDo:
   collectionOperations:
     register:
       method: POST
-      path: /users/{id}/add-todo
+      path: /user/add-todo
       controller: src\Application\Action\User\AddToDo
       denormalization_context:
         groups: [todo_post]

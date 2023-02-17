@@ -24,9 +24,8 @@ final class Version20230117202125 extends AbstractMigration
                     password VARCHAR(100) DEFAULT NULL, 
                     token VARCHAR(100) DEFAULT NULL, 
                     active TINYINT(1) NOT NULL DEFAULT 0, 
-                    reset_password_token VARCHAR(100) DEFAULT NULL, 
                     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-                    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+                    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                     INDEX IDX_user_email (email),
                     CONSTRAINT U_user_email UNIQUE KEY (email)
                 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB

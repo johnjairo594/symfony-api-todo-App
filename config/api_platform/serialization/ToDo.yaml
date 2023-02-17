@@ -12,3 +12,5 @@ src\Domain\ToDo\Model\ToDo:
       groups: [ todo_read ]
     updatedAt:
       groups: [ todo_read ]
+    owner:
+      groups: [todo_read]

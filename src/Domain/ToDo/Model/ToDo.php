@@ -2,6 +2,7 @@
 
 namespace src\Domain\ToDo\Model;
 
+use src\Domain\User\Model\User;
 use Symfony\Component\Uid\Uuid;
 
 class ToDo
@@ -12,6 +13,7 @@ class ToDo
     private bool $done;
     private \DateTime $createdAt;
     private \DateTime $updatedAt;
+    private User $owner;
 
     /**
      * @param string $name
@@ -25,6 +27,22 @@ class ToDo
         $this->done = false;
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @return User
+     */
+    public function getOwner(): User
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param User $owner
+     */
+    public function setOwner(User $owner): void
+    {
+        $this->owner = $owner;
     }
 
     /**
