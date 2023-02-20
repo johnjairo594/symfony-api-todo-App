@@ -14,3 +14,5 @@ src\Domain\User\Model\User:
       groups: [ user_read ]
     updatedAt:
       groups: [ user_read ]
+    toDos:
+      groups: [ user_read ]
