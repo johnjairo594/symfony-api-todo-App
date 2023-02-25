@@ -30,7 +30,7 @@ export function deleteConfirm(id){
         ).then(response => {
             showAlert('Todo deleted', 'error');
             window.setTimeout(function (){
-                window.location.href = '/home'
+                window.location.href = '/'
             }, 1000)
             })
         } else {

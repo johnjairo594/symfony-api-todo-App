@@ -59,6 +59,8 @@ export default {
         showAlert('Name cannot be blank', 'error')
       } else if (this.password.trim() === ''){
         showAlert('Password cannot be blank', 'error')
+      } else if (this.password.length < 6) {
+        showAlert('Password must contain more than 6 characters')
       } else {
         axios.post('http://localhost:250/api/v1/users/register',
             {name: this.name, email: this.email, password: this.password})

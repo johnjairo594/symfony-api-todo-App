@@ -7,7 +7,7 @@ import UserCreateView from "@/views/UserCreateView.vue";
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: HomeView
   },
@@ -45,6 +45,11 @@ router.beforeEach(async(to)=>{
   if (authRequired && !localStorage.jwt){
     to.fullPath
     return '/login'
+  }
+
+  if (!authRequired && localStorage.jwt){
+    to.fullPath
+    return '/'
   }
 })
 

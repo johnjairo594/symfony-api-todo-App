@@ -1,12 +1,12 @@
 <template>
   <nav class="navbar navbar-expand bg-primary">
-    <a class="navbar-brand mx-2" href="/home">Symfony Todo App</a>
+    <a class="navbar-brand mx-2" href="/">Symfony Todo App</a>
     <div class="container-fluid">
 
       <div class='collapse navbar-collapse flex justify-content-between'>
         <ul class="navbar-nav mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/create-todo">Create Todo</a>

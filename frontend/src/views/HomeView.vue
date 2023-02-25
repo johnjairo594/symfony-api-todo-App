@@ -62,10 +62,6 @@ export default {
           .then(
               response => {
                 this.getUserTodos();
-                console.log(response.data);
-                // window.setTimeout(function (){
-                //   window.location.href = '/home'
-                // }, 1000)
               }
           )
     }

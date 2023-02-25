@@ -8,7 +8,7 @@
         <p class="card-text m-0 mt-2"><label for="todoDescription">Description</label></p>
         <input v-model="todoDescription" class="input-group mb-2" type="text" id="todoDescription">
         <div class="row justify-content-center gap-2 mt-2">
-          <router-link :to="{path:'/home'}" class="btn btn-danger col-auto"><p class="d-inline">Cancel</p></router-link>
+          <router-link :to="{path:'/'}" class="btn btn-danger col-auto"><p class="d-inline">Cancel</p></router-link>
           <button class="btn btn-success col-auto"><p class="d-inline">Save</p></button>
         </div>
       </div>
@@ -41,7 +41,7 @@ export default {
             .then(response => {
               showAlert('Todo created', 'success');
               window.setTimeout(function (){
-                window.location.href = '/home'
+                window.location.href = '/'
               }, 1000)
             })
       }

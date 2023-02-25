@@ -8,7 +8,7 @@
         <p class="card-text m-0 mt-2"><label for="todoDescription">Edit todo description</label></p>
         <input v-model="todoDescription" class="input-group" type="text" id="todoDescription">
         <div class="row justify-content-center gap-2 mt-2">
-          <router-link :to="{path:'/home'}" class="btn btn-danger col-auto"><p class="d-inline">Cancel</p></router-link>
+          <router-link :to="{path:'/'}" class="btn btn-danger col-auto"><p class="d-inline">Cancel</p></router-link>
           <button class="btn btn-success col-auto"><p class="d-inline">Save</p></button>
         </div>
       </div>
@@ -20,14 +20,8 @@ import {showAlert} from "@/utils";
 import Navbar from "@/components/navbar.vue";
 import {useRoute} from "vue-router";
 import axios from "axios";
-import HomeView from "@/views/HomeView.vue";
 export default {
   name: "EditTodoView",
-  computed: {
-    HomeView() {
-      return HomeView
-    }
-  },
   components: {Navbar},
   data(){
     return{
@@ -66,7 +60,7 @@ export default {
                 response => {
                   showAlert('Todo edited', 'success');
                   window.setTimeout(function (){
-                    window.location.href = '/home'
+                    window.location.href = '/'
                   }, 1000)
                 }
             )
