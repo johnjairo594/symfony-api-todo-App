@@ -1,12 +1,12 @@
 <template>
-  <section class="vh-100 gradient-custom">
+  <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card bg-primary text-white" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
 
-              <form v-on:submit.prevent="loginCheck" class="mb-md-5 mt-md-4 pb-5">
+              <form v-on:submit="loginCheck" class="mb-md-5 mt-md-4 pb-5">
 
                 <h2 class="fw-bold mb-2 text-uppercase">Todo App</h2>
                 <p class="text-white-50 mb-5">Please enter your email and password!<br>
@@ -31,7 +31,7 @@
               </form>
 
               <div>
-                <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
+                <p class="mb-0">Don't have an account? <a href="/create-user" class="text-white-50 fw-bold">Sign Up</a>
                 </p>
               </div>
 
@@ -45,8 +45,6 @@
 
 <script>
   import axios from "axios";
-  import {getTodos, login} from "@/utils";
-  import jwtDecode from "jwt-decode";
 
   export default {
     name:'Login',
@@ -58,22 +56,18 @@
     },
     methods:{
       loginCheck(){
+        event.preventDefault();
         axios.post('http://localhost:250/api/v1/users/login_check', {"username":this.email, "password":this.password})
             .then((response => {
               event.preventDefault();
               this.jwt = response.data['token'];
               localStorage.jwt = this.jwt;
               this.$router.push('home');
-              // jwtDecoded = jwtDecode(jwt);
-              // getTodos();
-              // window.location.href='http://localhost:8080/home';
             })).catch( error => {
               let alertMessage = document.getElementById('incorrectCombination');
               alertMessage.innerText = 'Incorrect email and password combination, please try again.';
-              console.log(error)
             }
         )
-        // window.location.href='http://localhost:8080/home'
       }
     }
 

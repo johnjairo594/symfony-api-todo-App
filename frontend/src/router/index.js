@@ -22,7 +22,7 @@ const routes = [
     component: CreateTodoView
   },
   {
-    path: '/edit-todo',
+    path: '/edit-todo/:id',
     name: 'edit-todo',
     component: EditTodoView
   },{
@@ -36,6 +36,16 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach(async(to)=>{
+  const publicPages = ['/login', '/create-user'];
+  const authRequired = !publicPages.includes(to.path);
+
+  if (authRequired && !localStorage.jwt){
+    to.fullPath
+    return '/login'
+  }
 })
 
 export default router
