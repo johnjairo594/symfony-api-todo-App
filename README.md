@@ -22,7 +22,7 @@ ___
 ~~~
 make run
 ~~~
-### Enter to php container to install dependencies and run migrations
+### Enter to php container to install dependencies, generate jwt keys and run migrations
 ~~~
 make ssh-be
 ~~~
@@ -31,6 +31,9 @@ composer install
 ~~~
 ~~~
 php bin/console doctrine:migration:migrate
+~~~
+~~~
+php bin/console lexik:jwt:generate-keypair
 ~~~
 #### You can check the routes whit 
 ~~~

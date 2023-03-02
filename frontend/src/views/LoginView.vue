@@ -62,7 +62,7 @@
               event.preventDefault();
               this.jwt = response.data['token'];
               localStorage.jwt = this.jwt;
-              this.$router.push('home');
+              this.$router.push('/');
             })).catch( error => {
               let alertMessage = document.getElementById('incorrectCombination');
               alertMessage.innerText = 'Incorrect email and password combination, please try again.';
