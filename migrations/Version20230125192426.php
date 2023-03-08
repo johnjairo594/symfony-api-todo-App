@@ -23,10 +23,13 @@ final class Version20230125192426 extends AbstractMigration
                 id CHAR(36) NOT NULL PRIMARY KEY,
                 name VARCHAR(100) NOT NULL,
                 description VARCHAR(255) NOT NULL,
+                owner_id CHAR(36)NOT NULL,
                 done TINYINT(1) NOT NULL DEFAULT 0,
                 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 updated_at DateTIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                INDEX IDX_user_todo_name (name)
+                INDEX IDX_user_todo_name (name),
+                INDEX IDX_user_todo_owner_id (owner_id),
+                CONSTRAINT FK_user_todo_owner_id FOREIGN KEY (owner_id) REFERENCES `user` (id) ON UPDATE CASCADE ON DELETE CASCADE
             ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = innoDB'
         );
 

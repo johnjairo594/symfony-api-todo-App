@@ -1,0 +1,8 @@
+parameters: # password
+  testing_password_hash: $argon2i$v=19$m=16,t=2,p=1$cGFzc3dvcmQ$A9HKT/FCm9ft8VCFgT4rVw
+src\Domain\User\Model\User:
+  User-0:
+    __construct:
+      name: Jeanpier
+      email: jeanpier@todo.com
+    password: <{testing_password_hash}>

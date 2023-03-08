@@ -35,7 +35,8 @@ services:
 
   database-container:
     container_name: database-container
-    image: mysql:8.0
+    build:
+      context: ./docker/database
     ports:
       - 36000:3306
     environment:

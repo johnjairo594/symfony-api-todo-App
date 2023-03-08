@@ -2,6 +2,7 @@
 
 namespace src\Application\Service\User;
 
+use App\Infrastructure\Exceptions\ToDo\TodoFieldsCannotBeBlankException;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
@@ -42,8 +43,14 @@ class UserAddToDoService
         $name = RequestService::getField($request,'name');
         $description = RequestService::getField($request, 'description');
         $decodedJwtToken = $this->tokenManager->decode($this->tokenStorage->getToken());
-        $owner = $this->userRepository->FindOneByIdOrFail($decodedJwtToken['id']);
-
+        $ownerId = $decodedJwtToken['id'];
+        $owner = $this->userRepository->FindOneByIdOrFail($ownerId);
+        if (trim($name) === ''){
+            throw TodoFieldsCannotBeBlankException::nameBlank();
+        }
+        if (trim($description) === ''){
+            throw TodoFieldsCannotBeBlankException::descriptionBlank();
+        }
         $todo = new ToDo($name, $description);
         $todo->setOwner($owner);
         $this->toDoRepository->save($todo);
@@ -51,6 +58,5 @@ class UserAddToDoService
         $owner->addToDoToCollection($todo);
 
         return $todo;
-
     }
 }

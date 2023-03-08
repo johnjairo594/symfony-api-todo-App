@@ -1,0 +1,6 @@
+src\Domain\ToDo\Model\ToDo:
+  ToDo-0:
+    __construct:
+      name: Todo name test
+      description: Todo description test
+    owner: '@User-0'
