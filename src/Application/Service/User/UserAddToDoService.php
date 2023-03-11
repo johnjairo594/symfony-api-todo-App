@@ -8,10 +8,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use src\Infrastructure\Repository\UserRepository\UserRepository;
-use Symfony\Component\HttpFoundation\Request;
-use src\Application\Service\Request\RequestService;
 use src\Domain\ToDo\Model\ToDo;
-use src\Domain\User\Model\User;
 use src\Infrastructure\Repository\ToDoRepository\ToDoRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -38,10 +35,8 @@ class UserAddToDoService
      * @throws ORMException
      * @throws JWTDecodeFailureException
      */
-    public function addToDo(Request $request): ToDo
+    public function addToDo(string $name, string $description): ToDo
     {
-        $name = RequestService::getField($request,'name');
-        $description = RequestService::getField($request, 'description');
         $decodedJwtToken = $this->tokenManager->decode($this->tokenStorage->getToken());
         $ownerId = $decodedJwtToken['id'];
         $owner = $this->userRepository->FindOneByIdOrFail($ownerId);

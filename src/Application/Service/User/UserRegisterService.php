@@ -3,11 +3,9 @@
 namespace src\Application\Service\User;
 
 use src\Application\Service\Password\HasherService;
-use src\Application\Service\Request\RequestService;
 use src\Domain\User\Model\User;
 use src\Infrastructure\Exceptions\User\UserAlreadyExistException;
 use src\Infrastructure\Repository\UserRepository\UserRepository;
-use Symfony\Component\HttpFoundation\Request;
 
 class UserRegisterService
 {
@@ -20,12 +18,8 @@ class UserRegisterService
         $this->hasherService = $hasherService;
     }
 
-    public function create(Request $request): User
+    public function create(string $name, string $email, string $password): User
     {
-        $name = RequestService::getField($request, 'name');
-        $email = RequestService::getField($request, 'email');
-        $password = RequestService::getField($request, 'password');
-
         $user = new User($name, $email);
         $user->setPassword($this->hasherService->generateHashedPassword($user, $password));
 
